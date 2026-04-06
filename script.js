@@ -1,19 +1,16 @@
-// Animation simple au scroll
-const cards = document.querySelectorAll(".card");
+const elements = document.querySelectorAll("section, .card");
 
-window.addEventListener("scroll", () => {
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if (top < window.innerHeight - 50) {
-      card.style.opacity = 1;
-      card.style.transform = "translateY(0)";
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
     }
   });
+}, {
+  threshold: 0.1
 });
 
-// Initial state
-cards.forEach(card => {
-  card.style.opacity = 0;
-  card.style.transform = "translateY(50px)";
-  card.style.transition = "0.5s";
+elements.forEach(el => {
+  el.classList.add("hidden");
+  observer.observe(el);
 });
