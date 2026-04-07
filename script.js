@@ -49,31 +49,5 @@ function animateStars() {
 
   requestAnimationFrame(animateStars);
 }
-function openProject(id) {
-  const modal = document.getElementById("modal");
-  const title = document.getElementById("modal-title");
-  const text = document.getElementById("modal-text");
-
-  if (id === "p1") {
-    title.innerText = "Filtre passe-bande";
-    text.innerText = "Conception complète du circuit, simulation et optimisation des fréquences.";
-  }
-
-  if (id === "p2") {
-    title.innerText = "Système embarqué";
-    text.innerText = "Programmation d’un microcontrôleur avec gestion temps réel.";
-  }
-
-  if (id === "p3") {
-    title.innerText = "Simulation EM";
-    text.innerText = "Analyse avancée des champs électromagnétiques avec outils spécialisés.";
-  }
-
-  modal.style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
 
 animateStars();
