@@ -1,53 +1,53 @@
-const elements = document.querySelectorAll("section, .card");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-elements.forEach(el => {
-  el.classList.add("hidden");
-  observer.observe(el);
-});
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('circuit-bg');
+const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let stars = [];
+function drawGrid() {
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 0.5;
 
-for (let i = 0; i < 100; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.5,
-    speed: Math.random() * 0.5
-  });
-}
-
-function animateStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#7aa2ff";
-    ctx.fill();
-
-    star.y += star.speed;
-    if (star.y > canvas.height) {
-      star.y = 0;
-      star.x = Math.random() * canvas.width;
+    // Création d'une grille légère style papier millimétré
+    for (let x = 0; x < canvas.width; x += 40) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
     }
-  });
-
-  requestAnimationFrame(animateStars);
+    for (let y = 0; y < canvas.height; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+    }
 }
 
-animateStars();
+// Animation simple de "courant" qui passe
+let offset = 0;
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawGrid();
+    
+    // Simuler un signal
+    ctx.beginPath();
+    ctx.strokeStyle = '#0077ff';
+    ctx.lineWidth = 2;
+    ctx.moveTo(0, canvas.height / 2);
+    
+    for (let i = 0; i < canvas.width; i++) {
+        let y = canvas.height / 2 + Math.sin(i * 0.01 + offset) * 20;
+        ctx.lineTo(i, y);
+    }
+    
+    ctx.stroke();
+    offset += 0.05;
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
