@@ -33,7 +33,7 @@
 
     <div class="grid">
 
-      <div class="card">
+      <div class="card" onclick="openProject('p1')">
         <img src="images/projet1.jpg">
         <div class="card-content">
           <h3>Filtre passe-bande</h3>
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="card">
+     <div class="card" onclick="openProject('p2')">
         <img src="images/projet2.jpg">
         <div class="card-content">
           <h3>Système embarqué</h3>
@@ -49,7 +49,7 @@
         </div>
       </div>
 
-      <div class="card">
+     <div class="card" onclick="openProject('p3')">
         <img src="images/projet3.jpg">
         <div class="card-content">
           <h3>Simulation EM</h3>
@@ -87,6 +87,14 @@
     </div>
 
   </section>
+  
+  <div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
+</div>
 
 </body>
 </html>
