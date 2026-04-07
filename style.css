@@ -1,6 +1,13 @@
+/* ================= GLOBAL ================= */
 html {
   scroll-behavior: smooth;
 }
+
+:root {
+  --blue: #7aa2ff;
+  --glow: 0 0 10px #7aa2ff, 0 0 20px #7aa2ff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +15,21 @@ html {
   font-family: "Segoe UI", sans-serif;
 }
 
+/* ================= BODY + BACKGROUND ================= */
 body {
   margin: 0;
   color: #e6f1ff;
   background: linear-gradient(135deg, #0b0f1a, #0d1b3d, #1a2a6c);
   overflow-x: hidden;
+
+  /* Effet grille (PCB) */
+  background-image: 
+    linear-gradient(rgba(122,162,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122,162,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-/* CANVAS étoiles */
+/* Canvas étoiles */
 #stars {
   position: fixed;
   top: 0;
@@ -23,9 +37,10 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
+  opacity: 0.6;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 nav {
   display: flex;
   justify-content: space-between;
@@ -34,6 +49,7 @@ nav {
   width: 100%;
   background: rgba(11, 15, 26, 0.8);
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 nav ul {
@@ -44,14 +60,16 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #7aa2ff;
+  color: var(--blue);
+  transition: 0.3s;
 }
 
 nav a:hover {
   color: #ffffff;
+  text-shadow: var(--glow);
 }
 
-/* HERO */
+/* ================= HERO ================= */
 header {
   height: 100vh;
   display: flex;
@@ -62,7 +80,8 @@ header {
 
 header h1 {
   font-size: 60px;
-  color: #7aa2ff;
+  color: var(--blue);
+  text-shadow: 0 0 10px rgba(122,162,255,0.5);
 }
 
 header p {
@@ -70,58 +89,69 @@ header p {
   color: #aab8ff;
 }
 
+/* ================= BUTTON ================= */
 .btn {
   padding: 12px 24px;
-  border: 1px solid #7aa2ff;
-  color: #7aa2ff;
+  border: 1px solid var(--blue);
+  color: var(--blue);
   text-decoration: none;
   width: fit-content;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  background: #7aa2ff;
+  background: var(--blue);
   color: #0b0f1a;
+  box-shadow: var(--glow);
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 section {
   padding: 100px 10%;
 }
 
 h2 {
   margin-bottom: 40px;
-  border-left: 3px solid #7aa2ff;
+  border-left: 3px solid var(--blue);
   padding-left: 10px;
+  text-shadow: 0 0 10px rgba(122,162,255,0.5);
 }
 
-/* GRID */
+/* ================= GRID ================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 .card {
   background: #11172a;
   border: 1px solid #1f2a44;
   overflow: hidden;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: #7aa2ff;
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--blue);
+  box-shadow: 0 0 25px rgba(122,162,255,0.5);
 }
 
-/* IMAGE */
+/* ================= IMAGES ================= */
 .card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
+  transition: 0.3s;
 }
 
-/* CONTENT */
+.card:hover img {
+  filter: brightness(1.2) drop-shadow(0 0 10px #7aa2ff);
+}
+
+/* ================= CARD CONTENT ================= */
 .card-content {
   padding: 20px;
 }
@@ -134,7 +164,7 @@ h2 {
   color: #aab8ff;
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
 .contact-icons {
   display: flex;
   gap: 20px;
@@ -151,40 +181,7 @@ h2 {
   filter: invert(60%) sepia(100%) saturate(500%) hue-rotate(200deg);
 }
 
-/* GLOW GLOBAL */
-:root {
-  --blue: #7aa2ff;
-  --glow: 0 0 10px #7aa2ff, 0 0 20px #7aa2ff;
-}
-
-/* TITRES */
-h1, h2 {
-  text-shadow: 0 0 10px rgba(122,162,255,0.5);
-}
-
-/* BOUTON */
-.btn:hover {
-  box-shadow: var(--glow);
-}
-
-/* CARDS */
-.card:hover {
-  box-shadow: 0 0 15px rgba(122,162,255,0.3);
-}
-
-/* NAV LINK */
-nav a:hover {
-  text-shadow: var(--glow);
-}
-
-body {
-  background: #0b0f1a;
-  background-image: 
-    linear-gradient(rgba(122,162,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(122,162,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
+/* ================= SCROLL ANIMATION ================= */
 .hidden {
   opacity: 0;
   transform: translateY(50px);
@@ -194,4 +191,48 @@ body {
 .show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ================= MODAL ================= */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: rgba(17, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  max-width: 500px;
+  color: white;
+  box-shadow: 0 0 20px var(--blue);
+  animation: pop 0.3s ease;
+}
+
+.close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Animation modal */
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
