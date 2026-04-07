@@ -1,94 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imane | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Génie Électrique</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <canvas id="stars"></canvas>
+    <header>
+        <nav>
+            <div class="logo">IMANE_A.M.L</div>
+            <ul>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Expertise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- NAVBAR -->
-  <nav>
-    <h2>Imane Adamou Mahaman Laouali</h2>
-    <ul>
-      <li><a href="#projects">Projets</a></li>
-      <li><a href="#about">Qui suis-je ?</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <main>
+        <section id="hero">
+            <h1>Ingénierie Électrique <span class="voltage-text">&</span> Systèmes</h1>
+            <p>Conception de circuits, énergies renouvelables et microélectronique.</p>
+        </section>
 
-  <!-- HERO -->
-  <header>
-    <h1>Etudiante en génie électrique</h1>
-    <p>Passionée par les systèmes embarqués, l'électronique et la conception de PCB</p>
-    <a href="#projects" class="btn">Voir mes projets</a>
-    <a href="#about" class="btn">Discutons</a>
-  </header>
+        <section id="projets">
+            <h2>Projets Sélectionnés</h2>
+            <div class="grid">
+                <div class="project-card">
+                    <span>01</span>
+                    <h3>Système Photovoltaïque</h3>
+                    <p>Optimisation de rendement de conversion.</p>
+                </div>
+                <div class="project-card">
+                    <span>02</span>
+                    <h3>Microcontrôleurs</h3>
+                    <p>Architecture de traitement de signal.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <!-- PROJETS -->
-  <section id="projects">
-    <h2>Projets</h2>
+    <canvas id="circuit-bg"></canvas>
 
-    <div class="grid">
-      <div class="card-content">
-        <img src="images/projet1.jpg">
-        <div class="card-content">
-          <h3>PDB moteurs</h3>
-          <p>Design d'un PCB d'alimentation pour les ESCs d'un drone.</p>
-        </div>
-      </div>
-
-      <div class="card-content">
-        <img src="images/projet2.jpg">
-        <div class="card-content">
-          <h3>Système embarqué</h3>
-          <p>Programmation microcontrôleur temps réel.</p>
-        </div>
-      </div>
-
-      <div class="card-content">
-        <img src="images/projet3.jpg">
-        <div class="card-content">
-          <h3>Simulation EM</h3>
-          <p>Analyse de champs électromagnétiques.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>Quis suis-je ?</h2>
-    <p>
-      Étudiante en génie électrique passionnée par les systèmes électroniques,
-      les PCB et les technologies innovantes. J'aime laisser libre cours à mon imagination pour aider dans la résolution 
-      de problème complexe ayant un impact réel.
-    </p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-
-    <div class="contact-icons">
-
-      <a href="mailto:imane.adamou@etud.polymtl.ca">
-        <img src="images/outlook.svg">
-      </a>
-
-      <a href="https://www.linkedin.com/in/imane-adamou-m-laouali" target="_blank">
-        <img src="images/linkedin.svg">
-      </a>
-
-    </div>
-
-  </section>
-  
-  
-
+    <script src="script.js"></script>
 </body>
 </html>
